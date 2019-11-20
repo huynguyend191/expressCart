@@ -23,9 +23,9 @@ router.get('/paymentFake', (req, res, next) => {
   const address = req.session.customer.address1;
   const total = req.session.totalCartAmount;
   req.session.cart.forEach(product => {
-    log.printLog('ORDER', req.sessionID, `"${customerEmail}" "${product.productId} ${product.quantity}"`);
+    log.printLog('ORDER', req.sessionID, `"${customerEmail}" "${product.productId}" ${product.quantity}`);
   });
-  log.printLog('PAYMENT', req.sessionID, `"${customerEmail}" "${address}" "${total}"`);
+  log.printLog('PAYMENT', req.sessionID, `"${customerEmail}" "${address}" ${total}`);
   req.session.destroy();
   res.status(200).json({ message: 'Payment successful' });
 })
